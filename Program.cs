@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 
 namespace ValidIP
@@ -26,6 +26,7 @@ namespace ValidIP
         public String result = "";
         public bool continue_var = true;
         public bool splitted = false;
+        public bool contains_zero = false;
         void finvalid(long num)
         {
             if (!continue_var)
@@ -62,8 +63,16 @@ namespace ValidIP
                             continue;
                         }
                     }
-                    Console.WriteLine("True(" + op.Substring(0, op.Length - 1) + ")");
+                    String[] checkarr = op.Split(".");
+                    for (int i = 0; i < checkarr.Length; i++)
+                    {
+                        if (checkarr[i] == "0")
+                            contains_zero = true;
+                    }
+                    Console.WriteLine(contains_zero ? "False" : "True(" + op.Substring(0, op.Length - 1) + ")");
                 }
+                else
+                    Console.WriteLine("False");
                 return;
             }
             else
