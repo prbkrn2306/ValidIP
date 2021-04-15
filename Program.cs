@@ -79,7 +79,7 @@ namespace ValidIP
             {
                 if (num == 0)
                     continue_var = false;
-                else if (num % 1000 > 255)
+                else if (num % 1000 >= 255)
                 {
                     result = "." + num % 100 + "" + result;
                     num = num / 100;
